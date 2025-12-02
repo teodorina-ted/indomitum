@@ -1,25 +1,32 @@
-// pages/_app.js
+// File: pages/_app.js - FINAL CLEANED CODE
 
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-// Absolute Paths
-import { useAuth } from '@/hooks/useAuth'; 
-import SeedForm from '@/components/SeedForm'; 
-import '@/styles/common.module.css'; 
-import commonStyles from '@/styles/common.module.css';
+// 🔥 IMPORTANT: Assuming styles/globals.css is imported somewhere globally or directly in _app.js
+// If you are using webpack setup, you must ensure the global styles are loaded.
 
+import { useAuth } from '@/hooks/useAuth'; // Keep the useAuth import
+import commonStyles from '@/styles/common.module.css'; // Keep the common styles import
 
 function MyApp({ Component, pageProps }) {
     const router = useRouter();
-    const { user, loading } = useAuth();
+    // Keep useAuth logic for global loading state and potential redirecting from non-auth routes
+    const { user, loading } = useAuth(); 
+
+    // If you are missing a direct import for globals.css, you would add it here:
+    // import '../styles/globals.css'; 
 
     if (loading) {
         return <div className={commonStyles.loading}>Loading application...</div>;
     }
 
+    // Optional: Add logic here to redirect non-logged-in users if needed, but AdminDashboard handles this too.
+    /*
     if (!user && router.pathname !== '/login') {
-        // Optional: Redirect non-logged-in users away from protected routes
+        router.push('/login');
+        return null;
     }
+    */
 
     return (
         <>

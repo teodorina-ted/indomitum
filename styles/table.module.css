@@ -1,67 +1,95 @@
-/* styles/table.module.css */
+/* styles/table.module.css (MERGED CONTENT) */
+/* Contains structure from old seedlist.module.css and colors from old table.module.css */
 
-.tableImage {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: var(--border-radius-small);
+.tableContainer {
+  width: 100%;
+  overflow-x: auto; /* Allows horizontal scrolling on small screens */
+  margin-top: 1.5rem;
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--shadow-small);
+  background-color: var(--color-background-light);
 }
 
-.actions {
+.table { /* Renamed from .seedTable */
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px; /* Increased min-width to accommodate new columns */
+}
+
+.table th,
+.table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: middle;
+}
+
+.table th {
+  background-color: var(--color-background-light); /* Using a lighter background for headers */
+  color: var(--color-text-dark);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  border-top: 2px solid var(--color-primary); /* New style for clarity */
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f7f7f7; /* Using a fixed color as background-alt might not exist */
+}
+
+.table tbody tr:hover {
+  background-color: var(--color-background-hover);
+}
+
+.tableActions { /* For bulk buttons at the top */
+    margin-bottom: 15px;
     display: flex;
+    justify-content: flex-end;
     gap: 10px;
 }
 
-.actionButton {
-    padding: 8px 12px;
-    border: none;
-    border-radius: var(--border-radius-small);
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+/* Action button general styling (from seedlist.module.css) */
+.actionButton { 
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: var(--border-radius-small);
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  white-space: nowrap; 
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
 }
 
+/* Specific button colors (from old table.module.css) */
 .editButton {
-    background-color: var(--color-secondary);
-    color: var(--color-text-white);
-}
-
-.editButton:hover {
-    background-color: #2b84b6;
+    background-color: var(--color-secondary); /* Blue */
+    color: var(--color-white);
 }
 
 .deleteButton {
-    background-color: var(--color-delete);
-    color: var(--color-text-white);
+    background-color: var(--color-accent-red); /* Red */
+    color: var(--color-white);
 }
 
-.deleteButton:hover {
-    background-color: var(--color-delete-hover);
+.viewButton {
+    background-color: var(--color-primary); /* Green */
+    color: var(--color-white);
 }
 
-.tableControls {
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: flex-end;
+.actionButton:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
 }
 
-.bulkActions {
-    display: flex;
-    gap: 10px;
-}
-
-.bulkButton {
-    padding: 10px 15px;
-    border: none;
-    border-radius: var(--border-radius-small);
-    font-weight: 600;
-    cursor: pointer;
-    background-color: var(--color-secondary);
-    color: var(--color-text-white);
-    transition: background-color 0.2s ease;
-}
-
-.bulkButton:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
+.coordinatesLink { /* For map links */
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--color-accent-blue);
+    font-size: 0.85rem;
+    text-decoration: underline;
 }
