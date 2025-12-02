@@ -1,42 +1,42 @@
+/* styles/global.css - Contains global styles and CSS variables. */
+
+/* --- GLOBAL VARIABLES --- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-primary: #1e3a5f;
+  --color-primary-dark: #1a2a3a;
+  --color-primary-light: #2c4a6a;
+  --color-secondary: #007bff;
+  --color-secondary-dark: #0056b3;
+  --color-accent: #28a745;
+  --color-accent-dark: #218838;
+  --color-delete: #dc3545;
+  --color-delete-hover: #c82333;
+  --color-background-light: #ffffff;
+  --color-background-dark: #f8f9fa;
+  --color-border: #e0e0e0;
+  --color-text-dark: #212529;
+  --color-text-medium: #6c757d;
+  --color-text-light: #b0b0b0;
+  --color-text-white: #ffffff;
+  --color-success: #28a745;
+  --color-error: #dc3545;
+
+  --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+  --border-radius-small: 5px;
+  --border-radius-medium: 8px;
+  --border-radius-large: 12px;
+
+  --shadow-small: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-large: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
+/* --- GLOBAL TAG STYLES --- */
+html, body {
   padding: 0;
   margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+  font-family: var(--font-family-sans);
+  background-color: var(--color-background-dark);
+  color: var(--color-text-dark);
 }

@@ -1,0 +1,202 @@
+/* styles/adminlayout.module.css (V1 - Updated: 2025-07-29) */
+
+.adminLayout {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--color-background-main);
+    color: var(--color-text-dark);
+}
+
+.sidebar {
+    width: 250px;
+    background-color: var(--color-primary-dark);
+    color: var(--color-text-light);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-medium);
+    transition: transform 0.3s ease-in-out;
+    position: fixed; /* Fixed position for sidebar */
+    height: 100%;
+    z-index: 1000; /* Ensure sidebar is above content */
+    left: 0; /* Align to the left */
+    top: 0; /* Align to the top */
+}
+
+.sidebarHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.appIcon {
+    font-size: 2.5rem;
+    margin-right: 10px;
+    color: var(--color-accent);
+}
+
+.appName {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-white);
+}
+
+.closeButton {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    color: var(--color-text-white);
+    font-size: 2rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+.nav {
+    flex-grow: 1;
+}
+
+.navList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navItem {
+    margin-bottom: 10px;
+}
+
+.navLink {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    color: var(--color-text-light);
+    text-decoration: none;
+    border-radius: var(--border-radius-medium);
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-weight: 500;
+}
+
+.navLink:hover {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary-dark);
+}
+
+.navLink.active {
+    background-color: var(--color-accent);
+    color: var(--color-text-white);
+    font-weight: 600;
+}
+
+.navIcon {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.sidebarFooter {
+    margin-top: auto; /* Pushes footer to the bottom */
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logoutButton {
+    width: 100%;
+    background-color: var(--color-delete);
+    color: var(--color-text-white);
+    border: none;
+    padding: 12px 20px;
+    border-radius: var(--border-radius-medium);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.2s ease;
+}
+
+.logoutButton:hover {
+    background-color: var(--color-delete-hover);
+}
+
+.mainContent {
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 250px; /* Offset for desktop sidebar */
+    transition: margin-left 0.3s ease-in-out;
+    position: relative; /* For overlay positioning */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%); /* Hide sidebar by default on mobile */
+        width: 220px;
+    }
+
+    .sidebarOpen {
+        transform: translateX(0%); /* Show sidebar when open */
+    }
+
+    .closeButton {
+        display: block; /* Show close button on mobile */
+    }
+
+    .mainContent {
+        margin-left: 0; /* No offset on mobile */
+        padding-top: 70px; /* Add padding for fixed mobile header */
+    }
+
+    .mobileHeader {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 15px;
+        background-color: var(--color-primary-dark);
+        color: var(--color-text-white);
+        box-shadow: var(--shadow-small);
+        position: fixed; /* Fixed mobile header */
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 999;
+    }
+
+    .menuButton {
+        background: none;
+        border: none;
+        color: var(--color-text-white);
+        font-size: 1.8rem;
+        cursor: pointer;
+    }
+
+    .headerTitle {
+        font-size: 1.3rem;
+        font-weight: 600;
+        flex-grow: 1; /* Allow title to take available space */
+        text-align: center;
+        margin-left: -30px; /* Offset to center title better */
+    }
+
+    .mobileLogoutButton {
+        background: none;
+        border: none;
+        color: var(--color-text-white);
+        font-size: 1.2rem;
+        cursor: pointer;
+        padding: 5px;
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 990; /* Below sidebar, above content */
+    }
+}

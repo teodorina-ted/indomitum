@@ -1,0 +1,31 @@
+this was the concept and what i call THE BIBLE of this app:
+DONE.
+now, go back to my requirements and full concept, remember the landing page must have also the scan a plant button and a login for the clients, besides the things ive mention before.
+So, this app must be dedicated for the seed collectors. those seeds must be added in a small bag that have a qr code. The seed collector is introducing the data about the seed to a crm that later will serve to sell to the client. The client later will have access to the plant card *pdf with details* by scanning the existing qr code. my client requested an ios version first so we focus forst on it, maybe later we develop also for android. i need a perfect and responsive design.
+in order to reach this process, we need to create a dashboard for the admin <=> seed collector, that will add a plant by the following steps (mobile parameters as the collectors will use iphones to ADD the plant):
+1. scan the existing qr through the phone cam, qr will be automatically detected and added
+2. take the picture of the plant the seed was collected or add it from the gallery/files/etc add the name 
+3.  confirm the map live location by city, country street etc and add notes optionally and SUBMIT
+
+by submitting this, the dashboard will have the following columns:
+1. name 
+2. id which will be the qr link that will have actually open the plant pdf
+3. date automatically added by submit button
+4. added by (admin or other plant/seed collector ID)
+5. country
+6. city
+7. street 
+8. zip code
+9. lattitude and longitude ad coordinated *linked that will open the location on a default map
+10. notes
+
+then this dashboard which must have features as a CRM must have:
+box selection
+filters like the sheets in excel for example by date by alphabet etc
+search bar
+export 
+delete bunch by checking the boxes
+
+any card box must have an individual id and a row in the dashboard admin crm 
+
+what else is unclear?

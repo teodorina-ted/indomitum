@@ -1,0 +1,224 @@
+/* styles/sidebar.module.css (V1 - Updated: 2025-07-29) */
+
+.sidebar {
+    background-color: var(--color-primary-dark); /* Using global variable for consistency */
+    color: var(--color-text-inverted);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    box-shadow: var(--shadow-medium);
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: width 0.3s ease, padding 0.3s ease;
+    overflow-x: hidden; /* Hide horizontal scrollbar during transition */
+}
+
+/* Open state for sidebar (desktop default) */
+.sidebarOpen {
+    width: 250px;
+    padding: 1.5rem 1rem;
+}
+
+/* Closed state for sidebar (mobile default, or collapsed by user) */
+.sidebarClosed {
+    width: 70px; /* Collapsed width */
+    padding: 1.5rem 0.5rem; /* Reduced padding */
+}
+
+.sidebarHeader {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Using rgba for a subtle white border */
+    justify-content: space-between; /* Distribute items */
+}
+
+.sidebarClosed .sidebarHeader {
+    justify-content: center; /* Center items when collapsed */
+    padding: 1rem 0;
+}
+
+.appIcon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: var(--border-radius-small);
+    flex-shrink: 0; /* Prevent icon from shrinking */
+    /* Add a background color or image for the icon if it's a placeholder */
+    background-color: var(--color-accent); /* Example: use accent color for app icon background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-text-white); /* Example: white text/icon on accent background */
+    font-size: 1.5rem; /* Example: size for an icon inside */
+}
+
+.sidebarClosed .appIcon {
+    margin-right: 0; /* No margin when collapsed */
+}
+
+.appName {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-text-inverted);
+    white-space: nowrap; /* Prevent wrapping */
+    overflow: hidden; /* Hide overflow during transition */
+    transition: opacity 0.3s ease;
+}
+
+.sidebarClosed .appName {
+    opacity: 0;
+    width: 0; /* Collapse text width */
+    margin-left: -10px; /* Pull it slightly left to hide */
+}
+
+.closeButton {
+    background: none;
+    border: none;
+    color: var(--color-text-light); /* Lighter color for close button */
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border-radius: var(--border-radius-small);
+    transition: color 0.2s ease, background-color 0.2s ease;
+    flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+.closeButton:hover {
+    color: var(--color-text-inverted);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navigation {
+    flex-grow: 1;
+}
+
+.navList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navItem {
+    margin-bottom: 0.75rem;
+}
+
+.navLink {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    border-radius: var(--border-radius-small);
+    color: var(--color-text-inverted);
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden; /* Hide overflow during transition */
+}
+
+.sidebarClosed .navLink {
+    justify-content: center; /* Center icons when collapsed */
+    padding: 0.8rem 0; /* Adjust padding */
+}
+
+.navLink:hover {
+    background-color: var(--color-primary); /* Use primary color for hover */
+    color: var(--color-text-white); /* White text on hover */
+}
+
+.navLink.active {
+    background-color: var(--color-accent); /* Use accent color for active link */
+    font-weight: 600;
+    box-shadow: var(--shadow-extra-small);
+}
+
+.navIcon {
+    font-size: 1.2rem;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.sidebarClosed .navIcon {
+    margin-right: 0;
+}
+
+.navText {
+    font-size: 1rem;
+    transition: opacity 0.3s ease;
+}
+
+.sidebarClosed .navText {
+    opacity: 0;
+    width: 0; /* Collapse text width */
+}
+
+.logoutSection {
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Consistent border style */
+}
+
+.logoutButton {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1rem;
+    background-color: var(--color-delete); /* Using global variable */
+    color: var(--color-text-inverted);
+    border: none;
+    border-radius: var(--border-radius-small);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    box-shadow: var(--shadow-extra-small);
+}
+
+.logoutButton:hover {
+    background-color: var(--color-delete-hover); /* Using global variable */
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.sidebarClosed .logoutButton {
+    justify-content: center; /* Center icon when collapsed */
+    padding: 0.8rem 0; /* Adjust padding */
+}
+
+.sidebarClosed .logoutButton .navText {
+    display: none; /* Hide logout text when collapsed */
+}
+
+/* Responsive adjustments for smaller screens (overrides default open state) */
+@media (max-width: 768px) {
+    .sidebarOpen {
+        width: 200px; /* Slightly narrower open state for mobile */
+        padding: 1.5rem 0.8rem;
+    }
+
+    .sidebarClosed {
+        width: 60px; /* Smaller collapsed width for mobile */
+        padding: 1.5rem 0.4rem;
+    }
+
+    .appIcon {
+        width: 32px; /* Smaller logo on mobile */
+        height: 32px;
+    }
+
+    .appName {
+        font-size: 1.2rem; /* Smaller app name on mobile */
+    }
+
+    .closeButton {
+        font-size: 1.2rem; /* Smaller close button on mobile */
+    }
+
+    .navIcon {
+        font-size: 1rem; /* Smaller nav icons on mobile */
+    }
+}

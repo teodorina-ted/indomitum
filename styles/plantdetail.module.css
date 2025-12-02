@@ -1,0 +1,183 @@
+/* styles/plantdetail.module.css (V1 - Updated: 2025-07-29) */
+
+.plantDetailGrid {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Image on left, details on right */
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.imageSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.mainPlantImage {
+  width: 100%;
+  max-width: 350px;
+  height: 350px; /* Fixed height for square display */
+  object-fit: cover; /* Crop to fill square */
+  border-radius: var(--border-radius-medium); /* Use defined variable */
+  border: 1px solid var(--color-input-border);
+  box-shadow: var(--shadow-small); /* Use defined variable */
+}
+
+.qrCodeSection {
+  text-align: center;
+  background-color: var(--color-background-light); /* Lighter background for QR */
+  padding: 1rem;
+  border-radius: var(--border-radius-medium); /* Use defined variable */
+  border: 1px solid var(--color-input-border);
+  box-shadow: var(--shadow-x-small); /* Use defined variable */
+  width: 100%;
+  max-width: 350px;
+}
+
+.qrCodeSection h3 {
+  font-size: 1.2rem;
+  color: var(--color-primary-dark); /* Use defined variable */
+  margin-bottom: 0.5rem;
+}
+
+.qrCodeImage {
+  width: 150px;
+  height: 150px;
+  background-color: white; /* Ensure white background for QR code */
+  padding: 10px; /* Padding inside the border */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  object-fit: contain;
+}
+
+.qrCodeText {
+  font-size: 0.9rem;
+  color: var(--color-text-medium); /* Use defined variable */
+}
+
+.infoSection {
+  background-color: var(--color-background-light);
+  padding: 2rem;
+  border-radius: var(--border-radius-medium); /* Use defined variable */
+  border: 1px solid var(--color-input-border);
+  box-shadow: var(--shadow-small); /* Use defined variable */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.detailItem {
+  font-size: 1.1rem;
+  color: var(--color-text-dark); /* Use defined variable */
+  line-height: 1.4;
+  display: flex; /* Use flex to align label and value */
+  align-items: baseline;
+}
+
+.detailItem strong {
+  color: var(--color-primary-dark); /* Use defined variable, changed from accent-blue */
+  display: inline-block; /* Keep strong on same line as span */
+  width: 120px; /* Align content by giving strong a fixed width */
+  flex-shrink: 0;
+}
+
+.detailItem span {
+  color: var(--color-text-medium); /* Use defined variable */
+  display: inline;
+  flex-grow: 1; /* Allow span to take remaining space */
+}
+
+.detailItem p {
+  color: var(--color-text-medium); /* Use defined variable */
+  display: block; /* For multiline description/notes */
+  margin-top: 0.5rem;
+  padding-left: 120px; /* Indent to align with other content */
+}
+
+
+.mapContainer {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--color-input-border);
+  text-align: center;
+}
+
+.mapContainer h3 {
+  font-size: 1.2rem;
+  color: var(--color-primary-dark); /* Use defined variable */
+  margin-bottom: 1rem;
+}
+
+.mockMapPlaceholder {
+  background-color: #e0e0e0;
+  color: #777;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+  border-radius: var(--border-radius-medium); /* Use defined variable */
+  font-style: italic;
+}
+
+.mapImage {
+  width: 100%;
+  max-width: 400px; /* Max width for the map image */
+  height: 250px;
+  object-fit: cover;
+  border-radius: var(--border-radius-medium); /* Use defined variable */
+  border: 1px solid var(--color-input-border);
+  box-shadow: var(--shadow-x-small); /* Use defined variable */
+}
+
+.mapLinkText {
+    font-size: 0.9rem;
+    color: var(--color-accent); /* Use defined variable */
+    margin-top: 0.5rem;
+    text-decoration: underline;
+}
+.mapLinkText:hover {
+    text-decoration: none;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .plantDetailGrid {
+    grid-template-columns: 1fr; /* Stack columns on smaller screens */
+  }
+  .imageSection, .infoSection {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .mainPlantImage, .qrCodeSection {
+    max-width: 300px; /* Adjust max-width for image/QR on smaller screens */
+  }
+  .detailItem strong {
+    width: 100px; /* Adjust width for strong tag */
+  }
+  .detailItem p {
+    padding-left: 0; /* Remove indent on smaller screens */
+    display: block; /* Keep as block for multiline notes */
+  }
+  .actions {
+    flex-direction: column;
+  }
+  .actions button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainPlantImage, .qrCodeSection {
+    max-width: 250px;
+    height: 250px;
+  }
+}

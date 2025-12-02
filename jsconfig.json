@@ -1,7 +1,39 @@
+// jsconfig.json (V2 - Corrected for Docker Build Stability)
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    // -------------------------------------------------------------------
+    // 🔥 UPGRADE: Use explicit path aliases for core folders (CRITICAL FIX)
+    // -------------------------------------------------------------------
     "paths": {
-      "@/*": ["./*"]
-    }
-  }
+      "@/components/*": ["components/*"],
+      "@/hooks/*": ["hooks/*"],
+      "@/lib/*": ["lib/*"],
+      "@/styles/*": ["styles/*"],
+      "@/*": ["*"] // Keeping the generic alias for broader compatibility
+    },
+    // -------------------------------------------------------------------
+    "jsx": "preserve",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "allowJs": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "incremental": true,
+    "lib": ["dom", "dom.iterable", "esnext"]
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.js",
+    "**/*.jsx"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next",
+    "out"
+  ]
 }

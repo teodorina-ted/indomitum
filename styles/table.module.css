@@ -1,0 +1,67 @@
+/* styles/table.module.css */
+
+.tableImage {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: var(--border-radius-small);
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.actionButton {
+    padding: 8px 12px;
+    border: none;
+    border-radius: var(--border-radius-small);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.editButton {
+    background-color: var(--color-secondary);
+    color: var(--color-text-white);
+}
+
+.editButton:hover {
+    background-color: #2b84b6;
+}
+
+.deleteButton {
+    background-color: var(--color-delete);
+    color: var(--color-text-white);
+}
+
+.deleteButton:hover {
+    background-color: var(--color-delete-hover);
+}
+
+.tableControls {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.bulkActions {
+    display: flex;
+    gap: 10px;
+}
+
+.bulkButton {
+    padding: 10px 15px;
+    border: none;
+    border-radius: var(--border-radius-small);
+    font-weight: 600;
+    cursor: pointer;
+    background-color: var(--color-secondary);
+    color: var(--color-text-white);
+    transition: background-color 0.2s ease;
+}
+
+.bulkButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}

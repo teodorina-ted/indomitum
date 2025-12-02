@@ -1,0 +1,38 @@
+C:.
+├── .gitignore
+├── jsconfig.json
+├── next.config.mjs
+├── package-lock.json
+├── package.json
+├── project_structure.txt
+└── README.md
+├── components/
+│   ├── AdminLayout.js
+│   ├── Header.tsx
+│   ├── Modal.js
+│   ├── SeedForm.js
+│   └── SeedList.js
+├── node_modules/
+├── pages/
+│   ├── _app.js
+│   ├── _document.js
+│   ├── index.js
+│   ├── login.js
+│   └── admin/
+│       ├── index.js
+│       ├── add-plant/
+│       │   └── index.js
+│       └── plant/
+│           └── [id].js
+└── styles/
+    ├── addplant.module.css
+    ├── adminlayout.module.css
+    ├── common.module.css
+    ├── dashboard.module.css
+    ├── globals.css
+    ├── landing.module.css
+    ├── login.module.css
+    ├── modal.module.css
+    ├── plantdetail.module.css
+    ├── seedlist.module.css
+    └── sidebar.module.css
