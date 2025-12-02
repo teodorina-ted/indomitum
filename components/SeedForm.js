@@ -1,4 +1,4 @@
-// File: components/SeedForm.js - FINAL PRODUCTION CODE (Image Input & Logic Fix)
+// File: components/SeedForm.js - FINAL PRODUCTION CODE (QR & Geolocation Fix)
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter } from 'next/router'; 
 import { FaArrowLeft, FaArrowRight, FaCamera, FaTimes, FaPlusCircle, FaMapMarkerAlt } from 'react-icons/fa';
@@ -60,6 +60,7 @@ function SeedForm({
     }, [plantData.imageUrl]);
 
     useEffect(() => {
+        // Initialization logic for addedBy and dateUploaded
         if (currentStep === 1 && !hasInitializedId) {
             updatePlantData(prev => ({
                 ...prev,
@@ -86,7 +87,8 @@ function SeedForm({
         if (typeof navigator !== 'undefined' && navigator.geolocation) {
             try {
                 const position = await new Promise((resolve, reject) => {
-                    navigator.geolocation.getCurrentPosition(resolve, reject, { enableHighAccuracy: true });
+                    // 🔥 FIX: Added timeout and high accuracy for stability/speed
+                    navigator.geolocation.getCurrentPosition(resolve, reject, { enableHighAccuracy: true, timeout: 5000 });
                 });
                 const { latitude, longitude } = position.coords;
                 const geoAddress = await reverseGeocode(latitude, longitude);
@@ -97,7 +99,8 @@ function SeedForm({
                     dateUploaded: new Date().toISOString()
                 });
             } catch (geoError) {
-                setFormError("Failed to get live location. Please ensure location services are enabled.");
+                // If geoError.code === 1, it's a permission issue.
+                setFormError("Failed to get live location. Ensure location services are enabled and you are using HTTPS.");
             }
         } else {
             setFormError("Geolocation not available in this browser.");
@@ -109,7 +112,6 @@ function SeedForm({
         if (!file) return;
         setFormError('');
         
-        // Basic file size check for stability
         if (file.size > 5 * 1024 * 1024) { 
             setFormError("Image file is too large (max 5MB).");
             event.target.value = null; 
@@ -209,7 +211,16 @@ function SeedForm({
                     <>
                         <h2 className={addPlantStyles.stepTitle}>Scan Plant ID</h2>
                         <p className={addPlantStyles.stepDescription}>Scan the QR code on the bag or enter the ID manually.</p>
-                        {/* QR Scan Controls (visibility handled by isMobile) */}
+                        
+                        {/* 🔥 FIX: QR Scan button is now conditionally rendered for mobile */}
+                        {isMobile() && (
+                            <div className={addPlantStyles.qrScanControls} style={{ marginBottom: '15px' }}>
+                                <button type="button" onClick={() => setShowQrScanModal(true)} className={`${commonStyles.button} ${commonStyles.buttonPrimary}`}>
+                                    <FaQrcode /> Scan QR Code
+                                </button>
+                            </div>
+                        )}
+
                         <div className={commonStyles.formField}>
                             <label htmlFor="id" className={commonStyles.label}>Plant ID <span className={commonStyles.required}>*</span></label>
                             <input type="text" id="id" name="id" value={plantData.id} onChange={handleManualIdChange} className={commonStyles.input} placeholder="Enter the Plant ID" required/>
@@ -238,10 +249,8 @@ function SeedForm({
                             <label className={commonStyles.label}>Plant Image <span className={commonStyles.required}>*</span></label>
                             <div className={addPlantStyles.imageInputControls}>
                                 <button type="button" onClick={() => plantImageFileInputRef.current.click()} className={`${commonStyles.button} ${commonStyles.buttonSecondary}`}>
-                                    {/* Updated Icon and Label */}
                                     <FaCamera /> {capturedImagePreview ? 'Change Picture' : 'Add Picture'}
                                 </button>
-                                {/* 🔥 CRITICAL FIX: File Input with Camera Capture */}
                                 <input 
                                     type="file" 
                                     ref={plantImageFileInputRef} 
@@ -257,7 +266,6 @@ function SeedForm({
                                     <img src={capturedImagePreview} alt="Captured Plant" className={addPlantStyles.capturedImage} />
                                 </div>
                             ) : (
-                                // 🔥 New Placeholder (CSS provided in common.module.css update)
                                 <div className={commonStyles.noImagePlaceholder}>
                                     No image uploaded yet. Click "Add Picture" to use camera or file picker.
                                 </div>
