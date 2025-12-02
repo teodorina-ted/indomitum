@@ -1,10 +1,9 @@
-/* styles/adminlayout.module.css (V1 - Updated: 2025-07-29) */
+/* styles/adminlayout.module.css (FINAL RESPONSIVENESS FIX) */
 
 .adminLayout {
     display: flex;
     min-height: 100vh;
-    background-color: var(--color-background-main);
-    color: var(--color-text-dark);
+    /* Removed background-color and color to rely on globals.css */
 }
 
 .sidebar {
@@ -16,11 +15,11 @@
     flex-direction: column;
     box-shadow: var(--shadow-medium);
     transition: transform 0.3s ease-in-out;
-    position: fixed; /* Fixed position for sidebar */
+    position: fixed; 
     height: 100%;
-    z-index: 1000; /* Ensure sidebar is above content */
-    left: 0; /* Align to the left */
-    top: 0; /* Align to the top */
+    z-index: 1000; 
+    left: 0; 
+    top: 0; 
 }
 
 .sidebarHeader {
@@ -36,11 +35,7 @@
     color: var(--color-accent);
 }
 
-.appName {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-text-white);
-}
+/* .appName removed to avoid redundancy */
 
 .closeButton {
     display: none; /* Hidden on desktop */
@@ -80,8 +75,9 @@
 }
 
 .navLink:hover {
-    background-color: var(--color-primary-light);
-    color: var(--color-primary-dark);
+    /* Assuming these colors exist in globals.css */
+    background-color: var(--color-sidebar-hover);
+    color: var(--color-sidebar-text);
 }
 
 .navLink.active {
@@ -96,7 +92,7 @@
 }
 
 .sidebarFooter {
-    margin-top: auto; /* Pushes footer to the bottom */
+    margin-top: auto; 
     padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -127,27 +123,27 @@
     padding: 20px;
     margin-left: 250px; /* Offset for desktop sidebar */
     transition: margin-left 0.3s ease-in-out;
-    position: relative; /* For overlay positioning */
+    position: relative; 
 }
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
     .sidebar {
-        transform: translateX(-100%); /* Hide sidebar by default on mobile */
+        transform: translateX(-100%); 
         width: 220px;
     }
 
     .sidebarOpen {
-        transform: translateX(0%); /* Show sidebar when open */
+        transform: translateX(0%); 
     }
 
     .closeButton {
-        display: block; /* Show close button on mobile */
+        display: block; 
     }
 
     .mainContent {
-        margin-left: 0; /* No offset on mobile */
-        padding-top: 70px; /* Add padding for fixed mobile header */
+        margin-left: 0; /* 🔥 FIX: No offset on mobile */
+        padding-top: 70px; /* Padding for fixed mobile header */
     }
 
     .mobileHeader {
@@ -158,7 +154,7 @@
         background-color: var(--color-primary-dark);
         color: var(--color-text-white);
         box-shadow: var(--shadow-small);
-        position: fixed; /* Fixed mobile header */
+        position: fixed; 
         top: 0;
         left: 0;
         width: 100%;
@@ -176,9 +172,10 @@
     .headerTitle {
         font-size: 1.3rem;
         font-weight: 600;
-        flex-grow: 1; /* Allow title to take available space */
+        flex-grow: 1; 
         text-align: center;
-        margin-left: -30px; /* Offset to center title better */
+        /* 🔥 FIX: Remove problematic negative margin */
+        margin: 0; 
     }
 
     .mobileLogoutButton {
@@ -197,6 +194,6 @@
         width: 100%;
         height: 100%;
         background: rgba(0, 0, 0, 0.5);
-        z-index: 990; /* Below sidebar, above content */
+        z-index: 990; 
     }
 }

@@ -1,7 +1,5 @@
 /* --- CSS Module: styles/common.module.css --- */
 
-/* 🔥 CRITICAL FIX: The Global * reset must be in globals.css, not here. */
-
 /* 2. Main Page Layout */
 .layout {
     min-height: 100vh;
@@ -122,4 +120,21 @@
     justify-content: flex-end; 
     gap: 10px;
     margin-top: 20px;
+}
+
+/* 🔥 NEW: Placeholder for image upload in SeedForm.js */
+.noImagePlaceholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    width: 100%;
+    margin-top: 15px;
+    background-color: var(--color-background-dark);
+    border: 2px dashed var(--color-border);
+    border-radius: var(--border-radius-medium);
+    color: var(--color-text-medium);
+    font-style: italic;
+    text-align: center;
+    padding: 10px;
 }
